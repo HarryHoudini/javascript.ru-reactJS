@@ -11,15 +11,19 @@ class Article extends Component {
         return (
             <div>
                 <h2>{article.title}</h2>
-                <button onClick={handleClick}>close</button>
+                <button onClick={this.handleClick}>{this.state.isOpen ? "close" : "open"}</button>
                 {body}
                 <h3>creation date: {new Date(article.date).toDateString()}</h3>
             </div>
         );
     }
+
+    handleClick = () => {
+        console.log("clicked");
+        this.setState({
+            isOpen: !this.state.isOpen,
+        });
+    };
 }
 
-function handleClick() {
-    console.log("----", "clicked");
-}
 export default Article;
